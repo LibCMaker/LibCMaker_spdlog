@@ -114,6 +114,11 @@ if (SPDLOG_BUILD_SHARED)
 #        message(FATAL_ERROR "spdlog shared lib is not yet supported under windows")
 #    endif()
     add_library(spdlog SHARED ${SPDLOG_SRCS} ${SPDLOG_ALL_HEADERS})
+    if(MSVC)
+      set_target_properties(spdlog PROPERTIES
+        WINDOWS_EXPORT_ALL_SYMBOLS ON
+      )
+    endif()
 else()
     add_library(spdlog STATIC ${SPDLOG_SRCS} ${SPDLOG_ALL_HEADERS})
 endif()
@@ -249,7 +254,10 @@ if (SPDLOG_INSTALL)
     # Include files
     #---------------------------------------------------------------------------------------
     install(DIRECTORY include/ DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}" PATTERN "fmt/bundled" EXCLUDE)
-    install(TARGETS spdlog spdlog_header_only EXPORT spdlog DESTINATION "${CMAKE_INSTALL_LIBDIR}")
+    install(TARGETS spdlog spdlog_header_only EXPORT spdlog
+        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
 
     if(NOT SPDLOG_FMT_EXTERNAL AND NOT SPDLOG_FMT_EXTERNAL_HO)
         install(DIRECTORY include/${PROJECT_NAME}/fmt/bundled/

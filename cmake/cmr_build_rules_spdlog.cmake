@@ -43,7 +43,3 @@
 
   # Configure library.
   add_subdirectory(${lib_SRC_DIR} ${lib_VERSION_BUILD_DIR})
-
-  if(MSVC)
-    target_compile_options(spdlog PRIVATE /WX-)
-  endif()
