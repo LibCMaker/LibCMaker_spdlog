@@ -51,7 +51,7 @@ set(LIBCMAKER_FMT_SRC_DIR "${LibCMaker_LIB_DIR}/LibCMaker_fmt")
 # Library specific vars and options
 #-----------------------------------------------------------------------
 
-option(SPDLOG_BUILD_SHARED "Build shared library" ${BUILD_SHARED_LIBS})
+option(SPDLOG_BUILD_SHARED "Build shared library" OFF)
 option(SPDLOG_BUILD_EXAMPLE "Build example" OFF)
 option(SPDLOG_BUILD_EXAMPLE_HO "Build header only example" OFF)
 option(SPDLOG_BUILD_TESTS "Build tests" OFF)
