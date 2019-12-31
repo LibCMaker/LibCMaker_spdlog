@@ -30,7 +30,7 @@
 #-----------------------------------------------------------------------
 
 set(SPDLOG_lib_NAME      "spdlog")
-set(SPDLOG_lib_VERSION   "1.4.2")
+set(SPDLOG_lib_VERSION   "1.4.2.20191231")
 set(SPDLOG_lib_DIR       "${CMAKE_CURRENT_LIST_DIR}")
 
 # To use our Find<LibName>.cmake.
@@ -63,10 +63,37 @@ option(SPDLOG_BUILD_BENCH
 option(SPDLOG_SANITIZE_ADDRESS "Enable address sanitizer in tests" OFF)
 option(SPDLOG_INSTALL "Generate the install target" ON)
 option(SPDLOG_FMT_EXTERNAL "Use external fmt library instead of bundled" ON)
-option(SPDLOG_WCHAR_SUPPORT "Support wchar api" OFF)
-option(SPDLOG_WCHAR_FILENAMES "Support wchar filenames" OFF)
+option(SPDLOG_FMT_EXTERNAL_HO
+  "Use external fmt header-only library instead of bundled"
+  OFF
+)
 option(SPDLOG_NO_EXCEPTIONS
   "Compile with -fno-exceptions. Call abort() on any spdlog exceptions"
+  OFF
+)
+
+if(WIN32)
+  option(SPDLOG_WCHAR_SUPPORT "Support wchar api" OFF)
+  option(SPDLOG_WCHAR_FILENAMES "Support wchar filenames" OFF)
+endif()
+if(${CMAKE_SYSTEM_NAME} STREQUAL "Linux")
+  option(SPDLOG_CLOCK_COARSE
+    "Use the much faster (but much less accurate) CLOCK_REALTIME_COARSE instead of the regular clock"
+    OFF
+  )
+endif()
+
+option(SPDLOG_PREVENT_CHILD_FD
+  "Prevent from child processes to inherit log file descriptors"
+  OFF
+)
+option(SPDLOG_NO_THREAD_ID
+  "Prevent spdlog from querying the thread id on each log call if thread id is not needed"
+  OFF
+)
+option(SPDLOG_NO_TLS "Prevent spdlog from using thread local storage" OFF)
+option(SPDLOG_NO_ATOMIC_LEVELS
+  "Prevent spdlog from using of std::atomic log levels (use only if your code never modifies log levels concurrently"
   OFF
 )
 
