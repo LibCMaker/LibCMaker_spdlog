@@ -86,7 +86,7 @@ add_executable(${PROJECT_NAME}
   ${example_src_DIR}/example.cpp
 )
 set_target_properties(${PROJECT_NAME} PROPERTIES
-  CXX_STANDARD 14
+  CXX_STANDARD 11
 )
 
 
