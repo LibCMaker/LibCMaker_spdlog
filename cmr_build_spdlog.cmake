@@ -29,9 +29,9 @@
 # Lib's name, version, paths
 #-----------------------------------------------------------------------
 
-set(SPDLOG_lib_NAME      "spdlog")
-set(SPDLOG_lib_VERSION   "1.4.2.20191231")
-set(SPDLOG_lib_DIR       "${CMAKE_CURRENT_LIST_DIR}")
+set(SPDLOG_lib_NAME "spdlog")
+set(SPDLOG_lib_VERSION "1.4.2.20191231" CACHE STRING "SPDLOG_lib_VERSION")
+set(SPDLOG_lib_DIR "${CMAKE_CURRENT_LIST_DIR}" CACHE PATH "SPDLOG_lib_DIR")
 
 # To use our Find<LibName>.cmake.
 list(APPEND CMAKE_MODULE_PATH "${SPDLOG_lib_DIR}/cmake/modules")
@@ -41,10 +41,13 @@ list(APPEND CMAKE_MODULE_PATH "${SPDLOG_lib_DIR}/cmake/modules")
 # LibCMaker_<LibName> specific vars and options
 #-----------------------------------------------------------------------
 
-set(COPY_SPDLOG_CMAKE_BUILD_SCRIPTS ON)
+option(COPY_SPDLOG_CMAKE_BUILD_SCRIPTS "COPY_SPDLOG_CMAKE_BUILD_SCRIPTS" ON)
 
 # Used in 'cmr_build_rules_spdlog.cmake'.
-set(LIBCMAKER_FMT_SRC_DIR "${LibCMaker_LIB_DIR}/LibCMaker_fmt")
+set(
+  LIBCMAKER_FMT_SRC_DIR "${LibCMaker_LIB_DIR}/LibCMaker_fmt"
+  CACHE PATH "LIBCMAKER_FMT_SRC_DIR"
+)
 
 
 #-----------------------------------------------------------------------
