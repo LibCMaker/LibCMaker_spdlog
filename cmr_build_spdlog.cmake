@@ -30,7 +30,7 @@
 #-----------------------------------------------------------------------
 
 set(SPDLOG_lib_NAME "spdlog")
-set(SPDLOG_lib_VERSION "1.4.2.20191231" CACHE STRING "SPDLOG_lib_VERSION")
+set(SPDLOG_lib_VERSION "1.9.2" CACHE STRING "SPDLOG_lib_VERSION")
 set(SPDLOG_lib_DIR "${CMAKE_CURRENT_LIST_DIR}" CACHE PATH "SPDLOG_lib_DIR")
 
 # To use our Find<LibName>.cmake.

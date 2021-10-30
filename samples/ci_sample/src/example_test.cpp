@@ -26,7 +26,7 @@
 
 #include "spdlog/spdlog.h"
 #include "spdlog/sinks/ostream_sink.h"
-#include "spdlog/details/pattern_formatter.h"
+#include "spdlog/pattern_formatter.h"
 
 #include "gtest/gtest.h"
 

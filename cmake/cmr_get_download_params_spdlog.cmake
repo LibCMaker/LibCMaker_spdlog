@@ -33,8 +33,12 @@
     set(src_commit
       "58e68901c741aab7a5b9c7ff059f228afc1d49e2")
   endif()
+  if(version VERSION_EQUAL "1.9.2")
+    set(arch_file_sha
+      "6fff9215f5cb81760be4cc16d033526d1080427d236e86d70bb02994f85e3d38")
+  endif()
 
-  set(base_url "https://github.com/gabime/spdlog/archive")
+  set(base_url "https://github.com/gabime/spdlog/archive/refs/tags")
   set(src_dir_name    "v${version}")
   set(arch_file_name  "${src_dir_name}.tar.gz")
   set(unpack_to_dir   "${unpacked_dir}/spdlog-${version}")
