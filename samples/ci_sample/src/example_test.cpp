@@ -49,11 +49,11 @@ TEST(basic_logging, basic_logging)
 {
     // const char
     EXPECT_TRUE(log_info("Hello") == "Hello");
-    EXPECT_TRUE(log_info("") == "");
+    EXPECT_TRUE(log_info("").empty());
 
     // std::string
     EXPECT_TRUE(log_info(std::string("Hello")) == "Hello");
-    EXPECT_TRUE(log_info(std::string()) == std::string());
+    EXPECT_TRUE(log_info(std::string()).empty());
 
     // Numbers
     EXPECT_TRUE(log_info(5) == "5");
@@ -62,8 +62,8 @@ TEST(basic_logging, basic_logging)
 
 TEST(log_levels, log_levels)
 {
-    EXPECT_TRUE(log_info("Hello", spdlog::level::err) == "");
-    EXPECT_TRUE(log_info("Hello", spdlog::level::critical) == "");
+    EXPECT_TRUE(log_info("Hello", spdlog::level::err).empty());
+    EXPECT_TRUE(log_info("Hello", spdlog::level::critical).empty());
     EXPECT_TRUE(log_info("Hello", spdlog::level::info) == "Hello");
     EXPECT_TRUE(log_info("Hello", spdlog::level::debug) == "Hello");
     EXPECT_TRUE(log_info("Hello", spdlog::level::trace) == "Hello");
